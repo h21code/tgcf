@@ -3,8 +3,10 @@
 import logging
 
 import yaml
-from telethon import events
+from telethon import events, Button
 
+
+    
 from tgcf import config, const, plugins
 from tgcf.bot.utils import (
     admin_protect,
@@ -128,8 +130,12 @@ async def start_command_handler(event):
 
 async def help_command_handler(event):
     """Handle the /help command."""
-    await event.respond(CONFIG.bot_messages.bot_help)
-
+    await event.respond(
+        CONFIG.bot_messages.bot_help,
+        buttons=[
+            [Button.url("🎭 JOIN THIS CHANNEL 🔥", "https://t.me/malluFilesGroup")]
+        ]
+    )
 
 def get_events():
     _ = get_command_prefix()
